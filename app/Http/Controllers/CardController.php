@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use QrCode;
 use App\Models\Card;
 use Illuminate\Http\Request;
 
