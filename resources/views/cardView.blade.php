@@ -8,7 +8,7 @@
                 <div class="card-header">{{ $card->first_name }}  {{ $card->last_name }} </div>
 
                 <div class="card-body">
-                    {{-- {!! QrCode::size(150)->generate(route('card.username',$card->user_name)) !!} --}}
+                    {!! QrCode::size(150)->generate(route('card.username',$card->user_name)) !!}
                 </div>
             </div>
         </div>

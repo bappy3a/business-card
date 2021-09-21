@@ -8,13 +8,23 @@ use Illuminate\Http\Request;
 class CardController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['store','username']);
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $items = Card::latest()->get();
+        return view('admin.card.index',compact('items'));
     }
 
     /**
@@ -56,7 +66,7 @@ class CardController extends Controller
             $data->user_name = sprintf($name.'%04d', $data->id);
         }
         $data->save();
-        return redirect()->back()->with('message', 'Form successfully submitted!');   
+        return redirect()->route('card.username',$data->user_name)->with('message', 'Form successfully submitted!');   
     }
 
     /**
@@ -101,7 +111,8 @@ class CardController extends Controller
      */
     public function destroy(Card $card)
     {
-        //
+        $card->delete();
+        return back();
     }
 
     public function username($username)

@@ -23,4 +23,5 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('card', CardController::class);
+Route::get('card/delete/{card}', [CardController::class, 'destroy'])->name('card.delete');
 Route::get('{username}', [CardController::class, 'username'])->name('card.username');
