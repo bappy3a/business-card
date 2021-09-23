@@ -29,10 +29,10 @@
             <div class="topbar-left">
                 <a href="{{ route('home') }}" class="logo">
                     <span>
-                        <img src="assets/images/logo.png" alt="" height="18">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="" style="width:70%;">
                     </span>
                     <i>
-                        <img src="assets/images/logo_sm.png" alt="" height="22">
+                        <img src="{{ asset('assets/images/logo_sm.png') }}" alt="" style="width:70%;">
                     </i>
                 </a>
             </div>
@@ -61,7 +61,12 @@
                 <div id="sidebar-menu">
                     <!-- Left Menu Start -->
                     <ul class="metismenu" id="side-menu">
-                        @include('inc.nav')
+                        @if (auth()->user()->role == 'admin')
+                            @include('inc.nav')
+                        @else
+                            @include('inc.user_nav')
+                        @endif
+                        
                     </ul>
 
                 </div>

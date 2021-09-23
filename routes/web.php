@@ -21,7 +21,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 Route::resource('card', CardController::class);
 Route::get('card/delete/{card}', [CardController::class, 'destroy'])->name('card.delete');
 Route::get('{username}', [CardController::class, 'username'])->name('card.username');
+
+Route::get('user/profile', [HomeController::class, 'profile'])->name('profile');
+Route::post('profile/update', [HomeController::class, 'profile_update'])->name('profile.update');
+
+Route::group(['middleware'=>['auth','admin']],function(){
+    //Route::view('/dashboard', 'app.home')->name('home');
+});
+
+Route::group(['middleware'=>['auth','admin']],function(){
+    //Route::view('/dashboard', 'app.home')->name('home');
+});

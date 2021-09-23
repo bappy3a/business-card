@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Models\Card;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,7 +51,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,10 +66,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user =  User::create([
+            'name' => $data['first_name'] . ' '. $data['last_name'] ,
             'email' => $data['email'],
+            'role' => 'user',
             'password' => Hash::make($data['password']),
         ]);
+
+        $card = New Card;
+        $card->user_id = $user->id;
+        $card->first_name = $data['first_name'];
+        $card->last_name = $data['last_name'];
+        $card->email = $data['email'];
+        if ($card->save()) {
+            $name = strtolower($card->first_name);
+            $card->user_name = sprintf($name.'%04d', $card->id);
+        }
+        $card->save();
+        return $user;
     }
 }

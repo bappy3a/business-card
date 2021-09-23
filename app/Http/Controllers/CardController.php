@@ -34,7 +34,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.card.create');
     }
 
     /**
@@ -56,14 +56,14 @@ class CardController extends Controller
         $data->first_name = $request->first_name;
         $data->last_name = $request->last_name;
         $data->email = $request->email;
+        $data->designation = $request->designation;
         $data->phone = $request->phone;
         $data->address = $request->address;
         if($request->hasFile('photo')){
             $data->photo = $request->photo->store('uploads/card');
         }
-        if ($data->save()) {
-            $name = strtolower($data->first_name);
-            $data->user_name = sprintf($name.'%04d', $data->id);
+        if($request->hasFile('cover_photo')){
+            $data->cover_photo = $request->cover_photo->store('uploads/card');
         }
         $data->save();
         return redirect()->route('card.username',$data->user_name)->with('message', 'Form successfully submitted!');   
@@ -75,9 +75,10 @@ class CardController extends Controller
      * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function show(Card $card)
+    public function show($id)
     {
-        //
+        $card = Card::where('user_id',$id)->first();
+        return view('admin.card.show',compact('card'));
     }
 
     /**
@@ -98,9 +99,34 @@ class CardController extends Controller
      * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, username $card)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'photo' => 'nullable|mimes:jpeg,jpg,png|max:1000',
+            'cover_photo' => 'nullable|mimes:jpeg,jpg,png|max:1000',
+        ]);
+        $data = Card::find($id);
+        $data->first_name = $request->first_name;
+        $data->last_name = $request->last_name;
+        $data->email = $request->email;
+        $data->designation = $request->designation;
+        $data->phone = $request->phone;
+        if($request->hasFile('photo')){
+            $data->photo = $request->photo->store('uploads/card');
+        }
+        if($request->hasFile('cover_photo')){
+            $data->cover_photo = $request->cover_photo->store('uploads/card');
+        }
+        foreach ($request->type as $key => $type) {
+            $item[$type] = $request->link[$key];
+        }
+        $data->link_1 = json_encode($item);
+        $data->save();
+        return redirect()->back()->with('message', 'Form successfully submitted!');   
     }
 
     /**

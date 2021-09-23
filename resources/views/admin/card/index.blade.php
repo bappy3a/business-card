@@ -7,7 +7,15 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body table-responsive">
-                    <h4 class="m-t-0 header-title mb-4"><b>Contact List</b></h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="m-t-0 header-title mb-4"><b>Contact List</b></h4>
+                        </div>
+                        <div class="col-6">
+                            <a href="{{ route('card.create') }}" class="btn btn-primary" style="margin-top: -9px;float: right;"> Add New</a>
+                        </div>
+                    </div>
+                    
 
                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 
