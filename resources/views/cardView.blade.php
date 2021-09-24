@@ -56,34 +56,37 @@
                         <p>{{ $card->phone }}</p>
                     </div>
                     <div class="social-icon">
-                        <ul>
-                            @foreach (json_decode($card->link_1) as $key=>$link)
-                                <li>
-                                    @if ($key == 'linkedin')
-                                        <i class="fab fa-linkedin-in"></i>
-                                    @elseif($key == 'Vimeo')
-                                        <i class="fab fa-vimeo-v"></i>
-                                    @elseif($key == 'facebook')
-                                        <i class="fab fa-facebook"></i>
-                                    @elseif($key == 'Twiter')
-                                        <i class="fab fa-"></i>
-                                    @elseif($key == 'Instagram')
-                                        <i class="fab fa-instagram"></i>
-                                    @elseif($key == 'Behance')
-                                        <i class="fab fa-behance"></i>
-                                    @elseif($key == 'Youtube')
-                                        <i class="fab fa-youtube"></i>
-                                    @elseif($key == 'Skype')
-                                        <i class="fab fa-skype"></i>
-                                    @elseif($key == 'WhatsApp')
-                                        <i class="fab fa-whatsapp"></i>
-                                    @endif
-                                    <span>&nbsp;&nbsp;&nbsp;{{ $link }}</span>
-                                </li>
-                                <br>
-                            @endforeach
+                        @if ($card->link_1)
+                            <ul>
+                                @foreach (json_decode($card->link_1) as $key=>$link)
+                                    <li>
+                                        @if ($key == 'linkedin')
+                                            <i class="fab fa-linkedin-in"></i>
+                                        @elseif($key == 'Vimeo')
+                                            <i class="fab fa-vimeo-v"></i>
+                                        @elseif($key == 'facebook')
+                                            <i class="fab fa-facebook"></i>
+                                        @elseif($key == 'Twiter')
+                                            <i class="fab fa-"></i>
+                                        @elseif($key == 'Instagram')
+                                            <i class="fab fa-instagram"></i>
+                                        @elseif($key == 'Behance')
+                                            <i class="fab fa-behance"></i>
+                                        @elseif($key == 'Youtube')
+                                            <i class="fab fa-youtube"></i>
+                                        @elseif($key == 'Skype')
+                                            <i class="fab fa-skype"></i>
+                                        @elseif($key == 'WhatsApp')
+                                            <i class="fab fa-whatsapp"></i>
+                                        @endif
+                                        <span>&nbsp;&nbsp;&nbsp;{{ $link }}</span>
+                                    </li>
+                                    <br>
+                                @endforeach
 
-                        </ul>
+                            </ul>
+                        @endif
+
                     </div>
                     <div class="social-icon footer">
                         <ul>

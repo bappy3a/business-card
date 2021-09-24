@@ -111,7 +111,7 @@
             </div> <!-- content -->
 
             <footer class="footer">
-                2015 - 2019 © Velonic - Coderthemes.com
+                {{ date('Y') }} © thelakhanigroup.com
             </footer>
 
         </div>
