@@ -125,6 +125,8 @@ class CardController extends Controller
             $item[$type] = $request->link[$key];
         }
         $data->link_1 = json_encode($item);
+        $data->link_2 = $request->link_2;
+        $data->link_3 = $request->country_code;
         $data->save();
         return redirect()->back()->with('message', 'Form successfully submitted!');   
     }

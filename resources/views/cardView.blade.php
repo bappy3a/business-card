@@ -53,7 +53,7 @@
                     </div>
                     <div class="name">{{ $card->first_name }}  {{ $card->last_name }}</div>
                     <div class="intro">
-                        <p>{{ $card->phone }}</p>
+                        <p>{{ $card->link_3.$card->phone }}</p>
                     </div>
                     <div class="social_list">
                         @if ($card->link_1)
@@ -103,7 +103,7 @@
                     <div class="social-icon footer">
                         <ul>
                             <li>
-                                <a href="tel:{{ $card->phone }}">
+                                <a href="tel:{{ $card->link_3.$card->phone }}">
                                     <i class="fas fa-phone-alt"></i>
                                 </a>
                             </li>

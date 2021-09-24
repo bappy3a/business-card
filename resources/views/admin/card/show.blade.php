@@ -46,8 +46,22 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-2 col-form-label">Phone Number</label>
+                                    <label class="col-2 col-form-label">Address</label>
                                     <div class="col-10">
+                                        <input value="{{ $card->link_2 }}" type="text" class="form-control @error('link_2') is-invalid @enderror" name="link_2" required autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-2 col-form-label">Phone Number</label>
+                                    <div class="col-md-3">
+                                        <select class="form-control select2" name="country_code" required>
+                                            <option value="" selected> Select Country Code</option>
+                                            @foreach(json_decode(file_get_contents(asset('js/countrycodes.json')), true) as $code)
+                                                <option @if($card->link_3 == $code['dial_code']) selected @endif value="{{ $code['dial_code'] }}">{{ $code['flag'] }}  &nbsp; {{ $code['name'] }} &nbsp; ({{ $code['dial_code'] }})</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-7">
                                         <input value="{{ $card->phone }}"  type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" required autocomplete="off">
                                     </div>
                                 </div>
@@ -188,6 +202,8 @@
                 $(this).parent().parent().remove();
             }
         });
-
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
     </script>
 @endsection
