@@ -41,8 +41,8 @@ img{
   margin-bottom: 20px;
 }
 .profile-card .profile-body .author-img img{
-  width: 170px;
-  height: 170px;
+  width: 115px;
+  height: 115px;
   border-radius: 50%; 
   padding: 5px;
   background-color: var(--white);
@@ -97,7 +97,7 @@ img{
 
 
 .profile-header img {
-  height: 192px;
+  height: 140px;
 }
 
 /*.cards i {
@@ -109,8 +109,8 @@ img{
 
 .qr {
   position: absolute;
-  margin-left: 366px;
-  margin-top: 58px;
+  margin-left: 335px;
+  margin-top: 0px;
 }
 
 .pby img {
@@ -132,8 +132,8 @@ span.web_address {
 
   .qr {
 
-    margin-top: 58px;
-    margin-left: 341px ;
+    /*margin-top: 58px;*/
+    margin-left: 335px ;
   }
 
   .profile-card {
@@ -152,4 +152,23 @@ span.web_address {
    height: 18px;
     width: 65px;
   }
+}
+
+
+.social_list ul {
+    list-style-type: none;
+    margin-right: 50px;
+}
+
+
+.social_list ul li a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #959595;
+    font-weight: bold;
+}
+
+i.fab.fa-vimeo-v.custom_i {
+    font-size: 25px;
+    color: #959595;
 }

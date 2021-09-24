@@ -55,7 +55,7 @@
                     <div class="intro">
                         <p>{{ $card->phone }}</p>
                     </div>
-                    <div class="social-icon">
+                    <div class="social_list">
                         @if ($card->link_1)
                             <ul>
                                 @foreach (json_decode($card->link_1) as $key=>$link)
@@ -67,7 +67,7 @@
                                         @elseif($key == 'facebook')
                                             <i class="fab fa-facebook"></i>
                                         @elseif($key == 'Twiter')
-                                            <i class="fab fa-"></i>
+                                            <i class="fab fa-twitter"></i>
                                         @elseif($key == 'Instagram')
                                             <i class="fab fa-instagram"></i>
                                         @elseif($key == 'Behance')
@@ -83,6 +83,12 @@
                                     </li>
                                     <br>
                                 @endforeach
+                                <li>
+                                 <i class="fab fa-vimeo-v custom_i"></i><span>&nbsp;&nbsp;&nbsp; <a href="">Vimeo</a></span>
+                                </li><br>
+                                <li>
+                                 <i class="fab fa-facebook"></i><span>&nbsp;&nbsp;&nbsp;facebook</span>
+                                </li><br>
 
                             </ul>
                         @endif
