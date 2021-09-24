@@ -61,34 +61,40 @@
                                 @foreach (json_decode($card->link_1) as $key=>$link)
                                     <li>
                                         @if ($key == 'linkedin')
-                                            <i class="fab fa-linkedin-in"></i>
+                                            <i class="fab fa-linkedin-in custom_i"></i>
+                                            <span>&nbsp;&nbsp;&nbsp; <a href="{{ $link }}">linkedin</a></span>
                                         @elseif($key == 'Vimeo')
-                                            <i class="fab fa-vimeo-v"></i>
+                                            <i class="fab fa-vimeo-v custom_i"></i>
+                                            <span>&nbsp;&nbsp;&nbsp; <a href="{{ $link }}">vimeo</a></span>
                                         @elseif($key == 'facebook')
-                                            <i class="fab fa-facebook"></i>
+                                            <i class="fab fa-facebook custom_i"></i>
+                                            <span>&nbsp;&nbsp;&nbsp; <a href="{{ $link }}">facebook</a></span>
                                         @elseif($key == 'Twiter')
-                                            <i class="fab fa-twitter"></i>
+                                            <i class="fab fa-twitter custom_i"></i>
+                                            <span>&nbsp;&nbsp;&nbsp; <a href="{{ $link }}">twitter</a></span>
                                         @elseif($key == 'Instagram')
-                                            <i class="fab fa-instagram"></i>
+                                            <i class="fab fa-instagram custom_i"></i>
+                                            <span>&nbsp;&nbsp;&nbsp; <a href="{{ $link }}">instagram</a></span>
                                         @elseif($key == 'Behance')
-                                            <i class="fab fa-behance"></i>
+                                            <i class="fab fa-behance custom_i"></i>
+                                            <span>&nbsp;&nbsp;&nbsp; <a href="{{ $link }}">behance</a></span>
                                         @elseif($key == 'Youtube')
-                                            <i class="fab fa-youtube"></i>
+                                            <i class="fab fa-youtube custom_i"></i>
+                                            <span>&nbsp;&nbsp;&nbsp; <a href="{{ $link }}">Youtube</a></span>
                                         @elseif($key == 'Skype')
-                                            <i class="fab fa-skype"></i>
+                                            <i class="fab fa-skype custom_i"></i>
+                                            <span>&nbsp;&nbsp;&nbsp; <a href="{{ $link }}">skype</a></span>
                                         @elseif($key == 'WhatsApp')
-                                            <i class="fab fa-whatsapp"></i>
+                                            <i class="fab fa-whatsapp custom_i"></i>
+                                            <span>&nbsp;&nbsp;&nbsp; <a href="{{ $link }}">whatsapp</a></span>
                                         @endif
-                                        <span>&nbsp;&nbsp;&nbsp;{{ $link }}</span>
                                     </li>
                                     <br>
                                 @endforeach
-                                <li>
+                                {{-- <li>
                                  <i class="fab fa-vimeo-v custom_i"></i><span>&nbsp;&nbsp;&nbsp; <a href="">Vimeo</a></span>
                                 </li><br>
-                                <li>
-                                 <i class="fab fa-facebook"></i><span>&nbsp;&nbsp;&nbsp;facebook</span>
-                                </li><br>
+                                 --}}
 
                             </ul>
                         @endif
